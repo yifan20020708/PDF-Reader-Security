@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Register_En Layout</title>
+  <link type="text/css" href="Register.css" rel="stylesheet">
+  <script src="Register.js"></script>
+</head>
+
+<body>
+<!--对于Login页面Header的页面定义-->
+<div class="header" id="header">
+  <div class="switch_lang">
+    <a href="Register.html" class="link_lang">中文</a>
+    <p style="display: inline-block">|</p>
+    <a href="Register_En.html" class="link_lang">EN</a>
+  </div>
+</div>
+<!--对于Login页面中部的页面定义-->
+<div class="middle" id="middle">
+
+  <div class="middle_login" id="middle_login">
+    <div class="register" id="register">
+      <div id="text_login">
+        <p>register</p>
+      </div>
+      <form id="register_sent" method="post" action="/server/server.php">
+        <div id="input">
+          <div id="input_username">
+            <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-16.48.58.png" alt="user" class="icon">
+            <label>
+              <input type="text" placeholder="account" class="input_box" id="input_account" name="account">
+            </label>
+          </div>
+          <div id="input_password">
+            <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-18.40.08.png" alt="password" class="icon">
+            <label>
+              <input type="password" placeholder="password" class="input_box" id="input_pass" name="password">
+            </label>
+          </div>
+          <div id="input_repass">
+            <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-18.40.08.png" alt="password" class="icon">
+            <label>
+              <input type="password" placeholder="password again" class="input_box" id="input_pass_again" name="password_again">
+            </label>
+          </div>
+          <div id="input_question">
+            <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-18.42.52.png" alt="password" class="icon">
+            <label>
+              <input type="text" placeholder="question" class="input_box" id="input_quest" name="question">
+            </label>
+          </div>
+          <div id="input_answer">
+            <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-18.42.52.png" alt="password" class="icon">
+            <label>
+              <input type="text" placeholder="answer" class="input_box" id="input_answ" name="answer">
+            </label>
+          </div>
+        </div>
+        <div id="button_login">
+          <button onclick="get_input()" type="button">register</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="middle_picture">
+      <img src="https://www.z4a.net/images/2023/05/08/2023-05-08-10.20.40.png" alt="">
+    </div>
+
+  </div>
+
+</div>
+
+<!--对于Login页面Footer的页面定义-->
+<div class="footer" id="footer">
+  <br/>
+  <p>Contact information: Minhang Campus, SJTU 15891332048</p>
+  <p>Group3 yifan0708@sjtu.edu.cn</p>
+</div>
+
+</body>
+
+</html>

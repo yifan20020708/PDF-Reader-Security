@@ -1,0 +1,868 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.header {
+    position: fixed;
+    background-color: darkgray;
+    width: 100vw;
+    height: 8vh;
+    top: 0;
+}
+
+.footer {
+    position: fixed;
+    background-color: darkgray;
+    width: 100vw;
+    height: 6.6vh;
+    bottom: 0;
+}
+
+.middle {
+    position: fixed;
+    width: 100vw;
+    height: 85.4vh;
+    bottom: 6.6vh;
+}
+
+.main_name {
+    position: absolute;
+    width: 12%;
+    height: 60%;
+    margin: 0;
+    top: 50%;
+    left: 2%;
+    transform: translate(-2%, -50%);
+}
+
+.user_information {
+    position: absolute;
+    width: 15%;
+    height: 60%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.user_information img {
+    position: absolute;
+    height: 100%;
+    left: 5%;
+}
+
+.account {
+    position: absolute;
+    height: 100%;
+    width: 70%;
+    left: 25%;
+}
+
+#user_account_1 {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+}
+
+.account_manage {
+    display: inline-block;
+    position: absolute;
+    width: 16%;
+    height: 60%;
+    margin: 0;
+    top: 50%;
+    right: 2%;
+    transform: translate(-2%, -50%);
+}
+
+.navigation_bar {
+    position: absolute;
+    background-color: #F4F5F8;
+    width: 16%;
+    height: 80%;
+    margin: 0;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+    border-radius: 15px;
+}
+
+.result_show_area {
+    position: absolute;
+    background-color: #F4F5F8;
+    width: 69%;
+    height: 80%;
+    margin: 0;
+    top: 50%;
+    right: 3%;
+    transform: translate(-3%, -50%);
+    border-radius: 15px;
+}
+
+.left_information {
+    position: absolute;
+    width: 12%;
+    height: 60%;
+    margin: 0;
+    top: 50%;
+    left: 2%;
+    transform: translate(-2%, -50%);
+}
+
+.right_information {
+    position: absolute;
+    width: 12%;
+    height: 60%;
+    margin: 0;
+    top: 50%;
+    right: 2%;
+    transform: translate(-2%, -50%);
+}
+
+#main_name_content {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#account_manage_content {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    background-color: white;
+    height: 90%;
+    width: 45%;
+    margin: 0;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+    font-size: 1.2em;
+}
+
+#logout {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    background-color: white;
+    height: 90%;
+    width: 45%;
+    margin: 0;
+    top: 50%;
+    right: 2%;
+    transform: translate(-2%, -50%);
+    font-size: 1.2em;
+}
+
+#Thesis_warehouse_button {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    width: 86%;
+    height: 15%;
+    left: 7%;
+    top: 5%;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.Thesis_warehouse :hover {
+    background-color: dimgray;
+    color: white;
+}
+
+#Reading_analysis {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    width: 86%;
+    height: 15%;
+    left: 7%;
+    top: 25%;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.Reading_analysis :hover {
+    background-color: dimgray;
+    color: white;
+}
+
+#Content_lookup {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    width: 86%;
+    height: 15%;
+    left: 7%;
+    top: 45%;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.Content_lookup :hover {
+    background-color: dimgray;
+    color: white;
+}
+
+#user_center {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    width: 86%;
+    height: 15%;
+    left: 7%;
+    top: 65%;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.user_center :hover {
+    background-color: dimgray;
+    color: white;
+}
+
+.left_information p {
+    position: absolute;
+    font-size: 1em;
+    margin: 0;
+    top: 50%;
+    left: 10%;
+    transform: translate(-10%, -50%);
+}
+
+.right_information p {
+    position: absolute;
+    font-size: 1em;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pdf_show_area {
+    display: none;
+    position: absolute;
+    background-color: #F4F5F8;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+}
+
+.pdf_show_area_header {
+    position: absolute;
+    width: 95%;
+    height: 10%;
+    top: 5%;
+    left: 0%;
+}
+
+.pdf_show_area_header button {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    background-color: white;
+    height: 90%;
+    width: 10%;
+    margin: 0;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+    font-size: 1.2em;
+}
+
+.search {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    background-color: white;
+    height: 90%;
+    border-radius: 15px;
+    width: 75%;
+    top: 50%;
+    right: 5%;
+    transform: translate(-5%, -50%);
+}
+
+.search img {
+    height: 90%;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 1%;
+    transform: translate(-1%, -50%);
+}
+
+.input_box {
+    height: 80%;
+    width: 80%;
+    margin: 0;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 40%;
+    transform: translate(-40%, -50%);
+    font-size: 1.2em;
+    border: transparent;
+    outline: none;
+}
+
+.pdf_show_table {
+    height: 75%;
+    width: 92%;
+    position: absolute;
+    left: 4%;
+    top: 20%;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.pdf_single_show {
+    position: absolute;
+    width: 95%;
+    height: 13%;
+    left: 2.5%;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+.pdf_name {
+    position: absolute;
+    width: 40%;
+    height: 80%;
+    margin: 0;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+}
+
+.pdf_time {
+    position: absolute;
+    width: 30%;
+    height: 80%;
+    margin: 0;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.pdf_action {
+    position: absolute;
+    width: 20%;
+    height: 80%;
+    margin: 0;
+    top: 50%;
+    right: 3%;
+    transform: translate(-3%, -50%);
+}
+
+.pdf_img {
+    position: absolute;
+    height: 95%;
+    margin: 0;
+    top: 50%;
+    left: 3%;
+    transform: translate(-3%, -50%);
+}
+
+#fond {
+    position: absolute;
+    height: 95%;
+    width: 70%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#fond a {
+    position: absolute;
+    font-size: 1.2em;
+    color: #5A8AED;
+    margin: 0;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+}
+
+.pdf_time p {
+    position: absolute;
+    font-size: 1.2em;
+    color: grey;
+    margin: 0;
+    top: 50%;
+    left: 0%;
+    transform: translate(-0%, -50%);
+}
+
+.pdf_delete {
+    position: absolute;
+    height: 95%;
+    margin: 0;
+    top: 50%;
+    right: 3%;
+    transform: translate(-3%, -50%);
+}
+
+.pdf_copy {
+    position: absolute;
+    height: 95%;
+    margin: 0;
+    top: 50%;
+    right: 22%;
+    transform: translate(-22%, -50%);
+}
+
+.pdf_action button {
+    border: none;
+    background-color: white;
+}
+
+.get_img {
+    display: none;
+    height: 75%;
+    width: 92%;
+    position: absolute;
+    left: 4%;
+    top: 20%;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.input_file {
+    position: absolute;
+    height: 80%;
+    width: 45%;
+    left: 2.5%;
+    top: 10%;
+    border-style: dashed;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+.file_information {
+    position: absolute;
+    height: 80%;
+    width: 45%;
+    right: 2.5%;
+    top: 10%;
+    border-style: dashed;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+.show_upload {
+    display: none;
+    position: absolute;
+    margin: 0;
+    height: 18%;
+    width: 80%;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+}
+
+.show_upload img {
+    position: absolute;
+    margin: 0;
+    height: 90%;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+}
+
+.pdf_name_show {
+    position: absolute;
+    margin: 0;
+    height: 90%;
+    width: 65%;
+    top: 50%;
+    left: 57%;
+    transform: translate(-57%, -50%);
+}
+
+.pdf_name_show p {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4em;
+    color: black;
+}
+
+#delete_button {
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    transform: translate(-95%, -50%);
+    border: none;
+    height: 80%;
+    width: 10%;
+}
+
+.input_file button {
+    position: absolute;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    background-color: white;
+    height: 15%;
+    width: 40%;
+    margin: 0;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    font-size: 1.2em;
+}
+
+.file_path {
+    position: absolute;
+    height: 15%;
+    width: 90%;
+    left: 5%;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+#file_information_button {
+    position: absolute;
+    height: 15%;
+    width: 40%;
+    left: 5%;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    bottom: 13.75%;
+    font-size: 1.2em;
+    background-color: white;
+
+}
+.modify_part_one button{
+    position: absolute;
+    height: 90%;
+    width: 10%;
+    border: none;
+    top: 50%;
+    left: 95%;
+    transform: translate(-95%, -50%);
+    background-color: #696969;
+}
+
+#icon {
+    position: absolute;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#back_button {
+    position: absolute;
+    height: 15%;
+    width: 40%;
+    right: 5%;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    bottom: 13.75%;
+    font-size: 1.2em;
+    background-color: white;
+}
+
+.photo {
+    position: absolute;
+    height: 90%;
+    margin: 0;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+}
+
+.input_box_file {
+    height: 80%;
+    width: 80%;
+    margin: 0;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 80%;
+    transform: translate(-80%, -50%);
+    font-size: 1.2em;
+    border: transparent;
+    outline: none;
+    overflow-x: auto;
+    color: #757575;
+}
+
+.show_img_one {
+    display: none;
+    position: absolute;
+    background-color: #F4F5F8;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+}
+
+.show_img_two {
+    display: none;
+    position: absolute;
+    background-color: #F4F5F8;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+}
+
+.show_img_one_area {
+    position: absolute;
+    width: 92%;
+    height: 92%;
+    left: 4%;
+    top: 4%;
+    border-style: dashed;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+.show_img_two_area {
+    position: absolute;
+    width: 92%;
+    height: 92%;
+    left: 4%;
+    top: 4%;
+    border-style: dashed;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+#myChart {
+    position: absolute;
+    width: 60vw;
+    height: 60vh;
+    margin: 0;
+    top: 7%;
+    left: 5%;
+}
+
+#radarChart{
+    position: absolute;
+    width: 60vw;
+    height: 60vh;
+    margin: 0;
+    top: 5%;
+    left: 5%;
+}
+
+.modify_password {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    height: 50%;
+    width: 30%;
+    background-color: dimgray;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    top: 25%;
+    left: 35%;
+}
+
+.modify_part {
+    position: absolute;
+    height: 14%;
+    width: 85%;
+    left: 7.5%;
+    background-color: white;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+.modify_part_one{
+    position: absolute;
+    height: 14%;
+    width: 85%;
+    left: 7.5%;
+}
+
+.modify_part_one p {
+    font-size: 1.5em;
+    color: white;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.icon {
+    height: 80%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translate(-3%, -50%);
+}
+
+.input_box_password {
+    height: 80%;
+    width: 80%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-75%, -50%);
+    font-size: 1.2em;
+    border : none;
+    outline: none;
+}
+
+#pass_button {
+    height: 84%;
+    width: 88%;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 8px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: white;
+    background: #5A8AED;
+    font-size: 1.2em;
+}
+
+.study_card {
+    display: none;
+    position: absolute;
+    background-color: #F4F5F8;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+}
+
+.study_card_name {
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    top: 50%;
+    left: 5%;
+    transform: translate(-5%, -50%);
+}
+
+.study_card_block {
+    position: absolute;
+    width: 95%;
+    height: 60%;
+    left: 2.5%;
+    border-style: solid;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+.study_card_block_name{
+    position: absolute;
+    height: 20%;
+    width: 80%;
+    left: 5%;
+    top: 7%;
+}
+
+.study_card_block_content {
+    position: absolute;
+    height: 64%;
+    width: 80%;
+    border-style: dashed;
+    border-width: thin;
+    border-color: darkgray;
+    border-radius: 15px;
+    right: 5%;
+    bottom: 5%;
+    overflow-y: auto;
+}
+
+.study_icon {
+    position: absolute;
+    height: 80%;
+    margin: 0;
+    top: 50%;
+    left: 0%;
+    transform: translate(-0%, -50%);
+}
+
+.study_card_block_name_div {
+    position: absolute;
+    height: 90%;
+    width: 85%;
+    margin: 0;
+    top: 50%;
+    left: 54%;
+    transform: translate(-54%, -50%);
+}
+
+.study_card_block_content_fond {
+    position: absolute;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 1.2em;
+}

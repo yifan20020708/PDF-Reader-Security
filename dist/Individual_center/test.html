@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Individual_center</title>
+    <link type="text/css" href="Individual_center.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="Individual_center.js"></script>
+</head>
+<body>
+<!--对于密码的修改-->
+<div class="modify_password" id="modify_password">
+    <div class="modify_part_one" style="top: 5%">
+        <p>修改密码</p>
+	<button onclick="back_path()">
+            <img src="https://www.z4a.net/images/2023/05/24/2023-05-24-15.02.21.png" alt="" id="icon">
+        </button>
+    </div>
+    <div class="modify_part" style="top: 24%">
+        <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-16.48.58.png" alt="user" class="icon">
+        <label>
+            <input type="password" placeholder="请输入当前密码" class="input_box_password" name="password" id="input_password">
+        </label>
+    </div>
+    <div class="modify_part" style="top: 43%">
+        <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-16.48.58.png" alt="user" class="icon">
+        <label>
+            <input type="password" placeholder="请输入新密码" class="input_box_password" name="new_password" id="input_new">
+        </label>
+    </div>
+    <div class="modify_part" style="top: 62%">
+        <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-16.48.58.png" alt="user" class="icon">
+        <label>
+            <input type="password" placeholder="请确认新密码" class="input_box_password" name="password_again" id="password_again">
+        </label>
+    </div>
+    <div class="modify_part_one" style="bottom: 5%">
+        <button type="button" id="pass_button" onclick="modify_password_button()">修改密码</button>
+    </div>
+</div>
+
+<div class="none_one" id="none_one">
+    <!--对于header的定义-->
+    <!--header之中存在两个组件：网页名称以及账户管理-->
+    <div class="header" id="header">
+        <!--对于header组件网页名称的定义-->
+        <div class="main_name" id="main_name">
+            <p id="main_name_content">PDFReader</p>
+        </div>
+        <!--对于用户身份进行定义-->
+        <div class="user_information" id="user_information">
+            <img src="https://www.z4a.net/images/2023/05/10/2023-05-10-15.30.41.png" rel="photo">
+            <div class="account" id="account">
+                <p id="user_account_1"></p>
+            </div>
+        </div>
+        <!--对于header组件账户管理的定义-->
+        <div class="account_manage" id="account_manage">
+            <button id="account_manage_content" onclick="modify_password()">账户管理</button>
+            <button id="logout" onclick="logout()">退出登陆</button>
+        </div>
+    </div>
+    <!--对于middle的定义-->
+    <!--middle中存在两个大类组件：list以及对应的展示区域-->
+    <div class="middle" id="middle">
+        <!--对于middle组件list的定义-->
+        <div class="navigation_bar" id="navigation_bar">
+            <div class="Thesis_warehouse">
+                <button id="Thesis_warehouse_button" onclick="Thesis_warehouse()">论文仓库</button>
+            </div>
+            <div class="Reading_analysis">
+                <button id="Reading_analysis" onclick="Reading_analysis()">阅读分析</button>
+            </div>
+            <div class="Content_lookup">
+                <button id="Content_lookup" onclick="Content_lookup()">标签分析</button>
+            </div>
+            <div class="user_center">
+                <button id="user_center" onclick="study_card()">学习闪卡</button>
+            </div>
+        </div>
+        <!--对于middle组件显示区域的定义-->
+        <div class="result_show_area" id="result_show_area">
+            <!--center_one pdf文件展示页面-->
+            <div class="pdf_show_area" id="pdf_show_area">
+                <!--相应上传文件button以及搜索图框-->
+                <div class="pdf_show_area_header" id="pdf_show_area_header">
+                    <button class="button" id="button" onclick="choose_file()">上传文件</button>
+                    <div class="search" id="search">
+                        <img src="https://www.z4a.net/images/2023/05/09/2023-05-09-23.10.53.png" alt="photo">
+                        <input type="text" placeholder="请输入pdf名称" class="input_box" onkeyup="showResult(this.value)">
+                    </div>
+                </div>
+                <!--显示pdf的表格-->
+                <div id="test">
+                    <div class="pdf_show_table" id="pdf_show_table">
+
+                    </div>
+                </div>
+                <!--进行对应文件的上传-->
+                <div class="get_img" id="get_img">
+                    <!--拖拽上传框-->
+                    <div class="input_file" id="drop">
+                        <div class="show_upload" id="show_upload">
+                            <img src="https://www.z4a.net/images/2023/05/23/2023-05-23-08.36.31.png" alt="">
+                            <div class="pdf_name_show">
+                                <p id="name"></p >
+                            </div>
+                            <button id="delete_button" onclick="delete_button()">
+                                <img src="https://www.z4a.net/images/2023/05/24/2023-05-24-14.48.50.png" alt="">
+                            </button>
+                        </div>
+                        <button onclick="input_file()" id="file_button">从本机上传文件</button>
+                        <input type="file" id="choose_file" accept="application/pdf" onchange="selectFile(event)" style="display: none;">
+                    </div>
+                    <!--详细信息的获取-->
+                    <div class="file_information" id="file_information">
+                        <!--进行文件路径的上传-->
+                        <form id="file" method="post" action="/server/Individual_center.php">
+                            <div class="file_path" id="file_path" style="top: 13.75%">
+                                <img src="https://www.z4a.net/images/2023/05/10/2023-05-10-08.50.32.png" class="photo">
+                                <select name="lang_tag" id="lang_file" class="input_box_file">
+                                    <option value="" >请选择pdf语言</option>
+                                    <option value="CHS">中文</option>
+                                    <option value="EN">英语</option>
+                                    <option value="JA">日语</option>
+                                    <option value="KO">韩语</option>
+                                    <option value="FR">法语</option>
+                                    <option value="else">其他</option>
+                                </select>
+                            </div>
+                            <div class="file_path" id="file_tag" style="top: 42.5%">
+                                <img src="https://www.z4a.net/images/2023/05/10/2023-05-10-08.51.04.png" class="photo">
+                                <select name="tag" id="tag_file" class="input_box_file">
+                                    <option value="" >请选择pdf标签</option>
+                                    <option value="N-Sc">自然科学类(N-Sc)</option>
+                                    <option value="E-Te">工程技术类(E-Te)</option>
+                                    <option value="MS-Sc">医学与生命科学类(MS-Sc)</option>
+                                    <option value="H-Sc">人文科学类(H-Sc)</option>
+                                    <option value="S-Sc">社会科学类(S-Sc)</option>
+                                    <option value="Syn">综合类(Syn)</option>
+                                </select>
+                            </div>
+                                <button type="button" onclick="send_message_button()" id="file_information_button">确认选择</button>
+                                <button type="button" id="back_button" onclick="back()">返回界面</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--进行阅读分析和与站内平均用户的对比-->
+            <div class="show_img_one" id="show_img_one">
+                <div class="show_img_one_area" id="show_img_one_area">
+                    <div id="myChart"></div>
+                </div>
+            </div>
+            <!--进行用户标签类型的分类-->
+            <div class="show_img_two" id="show_img_two">
+                <div class="show_img_two_area" id="show_img_two_area">
+                    <div id="radarChart"></div>
+                </div>
+            </div>
+            <!--进行学习闪卡的定义-->
+            <div class="study_card" id="study_card">
+                <!--对于头部的定义：存在‘学习闪卡’显示以及搜索框-->
+                <div class="pdf_show_area_header" id="study_card_header">
+                    <p class="study_card_name">学习闪卡</p>
+                    <div class="search" id="study_card_search">
+                        <img src="https://www.z4a.net/images/2023/05/09/2023-05-09-23.10.53.png" alt="photo">
+                        <input type="text" placeholder="请输入闪卡名称" class="input_box" >
+                    </div>
+                </div>
+                <!--对于闪卡区域的定义-->
+                <div class="pdf_show_table" id="study_card_show_table">
+                    <!--此处存放对应的示例-->
+                    <!--学习闪卡示例1-->
+                    <div class="study_card_block"  style="top: 3%">
+                        <div class="study_card_block_name">
+                            <img src="https://www.z4a.net/images/2023/05/11/2023-05-11-21.37.16.png" class="study_icon">
+                            <div class="study_card_block_name_div">
+                                <p class="study_card_name" style="left: 0%">APT攻击</p>
+                            </div>
+                        </div>
+                        <div class="study_card_block_content">
+                                <p class="study_card_block_content_fond">APT攻击，即高级可持续威胁攻击,也称为定向威胁攻击，指某组织对特定对象展开的持续有效的攻击活动。
+                                    这种攻击活动具有极强的隐蔽性和针对性,通常会运用受感染的各种介质、供应链和社会工程学等多种手段实施先进的、持久的且有效的威胁和攻击。</p>
+                        </div>
+                    </div>
+                    <!--学习闪卡示例2-->
+                    <div class="study_card_block"  style="top: 66%">
+                        <div class="study_card_block_name">
+                            <img src="https://www.z4a.net/images/2023/05/11/2023-05-11-21.37.16.png" class="study_icon">
+                            <div class="study_card_block_name_div">
+                                <p class="study_card_name" style="left: 0%">溯源图</p>
+                            </div>
+                        </div>
+                        <div class="study_card_block_content">
+                            <p class="study_card_block_content_fond">2015 年，美国国防部高级研究计划署（DARPA）启动的一项名为 “透明计算（Transparent Computing）” 的科研项目为上述问题的解决提供了可能性。
+                                该项目旨在通过将目前不透明的计算系统变得透明，辅助海量的系统日志建模，从而为后续的高层次程序行为分析和高效地入侵检测提供支持。具体来说，该项目将开发一套数据收集与建模系统来记录和建模所有系统和网络实体
+                                （包括进程、文件、网络端口等）及其之间的互动和因果关系（Causal Dependency）。这些实体和关系可以以图的形式表示，如图2所示，一般被称为 “溯源图（Provenance Graph）” 或者 “因果图（Causality Graph）”。</p>
+                        </div>
+                    </div>
+
+                    <div class="study_card_block"  style="top: 129%"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--对于footer的定义-->
+    <!--footer主要进行小组信息的存储-->
+    <div class="footer" id="footer">
+        <!--footer组件左段文字的定义-->
+        <div class="left_information" id="left_information">
+            <p>Group three</p>
+        </div>
+        <!--footer组件右段文字的定义-->
+        <div class="right_information" id="right_information">
+            <p>yifan0708@sjtu.edu.cn</p>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    var user = window.sessionStorage.getItem("account");
+    console.log(user);
+    document.getElementById('user_account_1').innerHTML = user;
+</script>
+</html>

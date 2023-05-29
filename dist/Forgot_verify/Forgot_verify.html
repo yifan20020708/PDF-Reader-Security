@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Forgot_verify Layout</title>
+  <link type="text/css" href="Forgot_verify.css" rel="stylesheet">
+  <script src="Forgot_verify.js"></script>
+</head>
+
+<body>
+
+<!--对于Login页面Header的页面定义-->
+<div class="header" id="header">
+  <div class="switch_lang">
+    <a href="Forgot_verify.html" class="link_lang">中文</a>
+    <p style="display: inline-block">|</p>
+    <a href="Forgot_verify_En.html" class="link_lang">EN</a>
+  </div>
+</div>
+<!--对于Login页面中部的页面定义-->
+<div class="middle" id="middle">
+  <div class="middle_login" id="middle_login">
+    <div class="login" id="login">
+      <div id="text_login">
+        <p>密码找回</p>
+      </div>
+
+      <form id="question_back" method="post" action="/server/Forgot_verify.php">
+        <div id="question_show">
+          <div id="input_username">
+            <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-16.48.58.png" alt="user" class="icon">
+            <label>
+              <input type="text" placeholder="请输入用户名" class="input_box" name="account" id="input_account">
+            </label>
+          </div>
+          <button id="question_show_button" type="button" onclick="get_input()">查找帐号</button>
+        </div>
+      </form>
+
+
+      <div id="answer_verify" >
+        <div id="question">
+          <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-18.42.52.png" alt="user" class="icon">
+          <p id="question_show_area"></p>
+        </div>
+
+        <form id = 'verify' method="post" action="/server/Forgot_verify_phase_two.php">
+          <div id="answer">
+            <img src="https://www.z4a.net/images/2023/05/05/2023-05-05-18.42.52.png" alt="user" class="icon">
+            <label>
+              <input type="text" placeholder="请输入答案" class="input_box" name="answer" id="input_answer">
+            </label>
+          </div>
+          <button id="modify_button" type="button" onclick="verify()">修改密码</button>
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="middle_picture">
+      <img src="https://www.z4a.net/images/2023/05/08/2023-05-08-10.20.40.png" alt="background">
+    </div>
+  </div>
+
+</div>
+
+<!--对于Login页面Footer的页面定义-->
+<div class="footer" id="footer">
+  <br/>
+  <p>联系方式：上海交通大学闵行校区 15891332048</p>
+  <p>第三小组 yifan0708@sjtu.edu.cn</p>
+</div>
+
+</body>
+
+</html>
