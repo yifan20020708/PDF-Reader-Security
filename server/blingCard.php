@@ -1,6 +1,7 @@
 <?php
-header('Content-Type: text/xml; charset=utf-8');
+header('charset=utf-8');
 header('Access-Control-Allow-Origin:*');
+
 // 获取表单数据
 $username_receive = $_REQUEST['username'];
 $pdf_receive = $_REQUEST['pdf'];
@@ -16,15 +17,20 @@ $conn = new mysqli($servername, $username, $password);
 if ($conn->connect_error) {
     die("连接失败: " . $conn->connect_error);
 }
+
+
 mysqli_query($conn, "set names utf8");
 // 防止SQL注入攻击和XSS存储攻击
 $username_receive_security = htmlspecialchars(mysqli_real_escape_string($conn,$username_receive),ENT_QUOTES,'UTF-8');
 $pdf_receive_security = htmlspecialchars(mysqli_real_escape_string($conn,$pdf_receive),ENT_QUOTES,'UTF-8');
 $word_receive_security = htmlspecialchars(mysqli_real_escape_string($conn,$word_receive),ENT_QUOTES,'UTF-8');
 $detail_receive_security = htmlspecialchars(mysqli_real_escape_string($conn,$detail_receive),ENT_QUOTES,'UTF-8');
+
+
 // 创建数据库
-$sql = "CREATE DATABASE IF NOT EXISTS $username_receive_security";
+$sql = "CREATE DATABASE IF NOT EXISTS ". $username_receive_security;
 mysqli_query($conn, $sql);
+
 #进行用户信息表的建立
 mysqli_select_db($conn, $username_receive_security);
 $sql_table = "CREATE TABLE IF NOT EXISTS $pdf_receive_security
