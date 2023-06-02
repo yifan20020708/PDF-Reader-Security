@@ -14,5 +14,11 @@
   <div id="app"></div>
   
 </body>
-
+<script>
+  const ref = document.referrer;
+  if (ref !== 'https://10.119.11.215/dist/Individual_center/Individual_center.html') {
+    window.alert("不可直接访问此页面！")
+    location.href = './Login/Login.html';
+  }
+</script>
 </html>

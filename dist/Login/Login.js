@@ -25,31 +25,35 @@ function get_input () {
     var verification_code_input = document.getElementById('verification_code_input').value;
     if(verification_code_input != verification_code_four) window.alert('验证码输入不正确,请重新输入');
     //手动进行post表单的发送
-    if(account_input != "" && password_input != "" && verification_code_input == verification_code_four){
-        //document.getElementById('send_message').submit();
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if(this.readyState == 4 && this.status == 200) {
-                console.log(this);
-                console.log(this.responseText);
-                if(this.responseText.length <= 15) {
-                    window.alert("This account is not registered！");
-                    location.href = 'Login.html';
+    if(account_input === "" || password_input === "" || verification_code_input !== verification_code_four) {}
+    else {
+        //限制用户输入，防止sql注入攻击和XSS存储攻击
+        var re=/select|update|delete|truncate|join|union|exec|insert|drop|count|'|"|;|>|<|%/i;
+        if (re.test(account_input) || re.test(password_input)) window.alert('输入内容中不可包含特殊符号');
+        else {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if(this.readyState == 4 && this.status == 200) {
+                    console.log(this);
+                    console.log(this.responseText);
+                    if(this.responseText.length <= 15) {
+                        window.alert("This account is not registered！");
+                        location.href = 'Login.html';
+                    }
+                    else if(this.responseText == 'Login result:Fail to login,your password is wrong!'){
+                        window.alert(this.responseText);
+                        location.href = 'Login.html';
+                    }
+                    else {
+                        window.sessionStorage.setItem("account",account_input);                        
+                        location.href = '../Individual_center/Individual_center.html';
+                    }
                 }
-                else if(this.responseText == 'Login result:Fail to login,your password is wrong!'){
-                    window.alert(this.responseText);
-                    location.href = 'Login.html';
-                }
-                else {
-                    window.sessionStorage.setItem("account",account_input);
-                    location.href = '../Individual_center/Individual_center.html';
-                }
-            }
-        };
-        xhttp.open("POST","/server/Login.php",true);
-        var send_message = "account=" + account_input + "&password=" +password_input;
-        xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xhttp.send(send_message);
-
+            };
+            xhttp.open("POST","/server/Login.php",true);
+            var send_message = "account=" + account_input + "&password=" +password_input;
+            xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhttp.send(send_message);
+        }
     }
 }

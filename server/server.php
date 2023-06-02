@@ -10,7 +10,7 @@ $hash_password = md5($password_receive);
 $hash_answer = md5($answer_receive);
 #进行数据库服务器的连接
 $dbServername = 'localhost';
-$dbUsername = 'root';
+$dbUsername = "pdfreader";
 $dbPassword = 'yifan0708';
 $database = mysqli_connect($dbServername,$dbUsername,$dbPassword);
 if (!$database) {
@@ -20,11 +20,11 @@ if (!$database) {
 }
 #确认数据库的编码
 mysqli_query($database,"set names utf8");
-#防止sql注入攻击
-$account_receive_security = mysqli_real_escape_string($database,$account_receive);
-$password_security = mysqli_real_escape_string($database,$hash_password);
-$question_receive_security = mysqli_real_escape_string($database,$question_receive);
-$answer_security = mysqli_real_escape_string($database,$hash_answer);
+#防止sql注入攻击以及XSS存储攻击
+$account_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$account_receive),ENT_QUOTES,'UTF-8');
+$password_security = htmlspecialchars(mysqli_real_escape_string($database,$hash_password),ENT_QUOTES,'UTF-8');
+$question_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$question_receive),ENT_QUOTES,'UTF-8');
+$answer_security = htmlspecialchars(mysqli_real_escape_string($database,$hash_answer),ENT_QUOTES,'UTF-8');
 #进行用户信息数据库的建立
 mysqli_query( $database,"CREATE DATABASE user_information");
 #进行用户信息表的建立

@@ -8,7 +8,7 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="Individual_center.js"></script>
 </head>
-<body>
+<body id="show_all">
 <!--对于密码的修改-->
 <div class="modify_password" id="modify_password">
     <div class="modify_part_one" style="top: 5%">
@@ -196,8 +196,14 @@
 
 </body>
 <script>
-    var user = window.sessionStorage.getItem("account");
-    console.log(user);
-    document.getElementById('user_account_1').innerHTML = user;
+    const ref = document.referrer;
+    if (ref === 'https://10.119.11.215/dist/Login/Login.html') {
+        var user = window.sessionStorage.getItem("account");
+        document.getElementById('user_account_1').innerHTML = user;
+    }
+    else {
+        window.alert("请首先进行正常登陆！")
+        location.href = '../Login/Login.html';
+    }
 </script>
 </html>

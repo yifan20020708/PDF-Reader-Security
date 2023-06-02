@@ -5,7 +5,7 @@ $path_receive = $_REQUEST['path'];
 $name_receive = $_REQUEST['name'];
 #进行数据库服务器的连接
 $dbServername = 'localhost';
-$dbUsername = 'root';
+$dbUsername = "pdfreader";
 $dbPassword = 'yifan0708';
 $database = mysqli_connect($dbServername,$dbUsername,$dbPassword);
 if (!$database) {
@@ -14,10 +14,10 @@ if (!$database) {
     die();
 }
 mysqli_query($database,"set names utf8");
-#进行sql注入的预防
-$account_receive_security = mysqli_real_escape_string($database,$account_receive);
-$name_receive_security = mysqli_real_escape_string($database,$name_receive);
-$path_receive_security = mysqli_real_escape_string($database,$path_receive);
+#进行sql注入的预防和XSS存储攻击
+$account_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$account_receive),ENT_QUOTES,'UTF-8');
+$name_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$name_receive),ENT_QUOTES,'UTF-8');
+$path_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$path_receive),ENT_QUOTES,'UTF-8');
 #进行对应数据库的选择
 mysqli_select_db($database,"user_information" );
 #进行相应文件的删除

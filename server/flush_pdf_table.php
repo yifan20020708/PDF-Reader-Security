@@ -5,7 +5,7 @@ header("Cache-Control: no-cache, must-revalidate");
 $account_receive = $_REQUEST['account'];
 #进行数据库服务器的连接
 $dbServername = 'localhost';
-$dbUsername = 'root';
+$dbUsername = "pdfreader";
 $dbPassword = 'yifan0708';
 $database = mysqli_connect($dbServername,$dbUsername,$dbPassword);
 if (!$database) {
@@ -14,8 +14,8 @@ if (!$database) {
     die();
 }
 mysqli_query($database,"set names utf8");
-#防止sql注入攻击
-$account_receive_security = mysqli_real_escape_string($database,$account_receive);
+#防止sql注入攻击和XSS存储攻击
+$account_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$account_receive),ENT_QUOTES,'UTF-8');
 #进行对应数据库的选择
 mysqli_select_db($database,"user_information");
 #进行对应账户的查询

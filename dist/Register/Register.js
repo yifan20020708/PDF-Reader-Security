@@ -21,25 +21,30 @@ function get_input () {
                     else {
                         if (answer_input == "") window.alert('回答不可为空！')
                         else {
-                            var xhttp = new XMLHttpRequest();
-                            xhttp.onreadystatechange = function () {
-                                if(this.readyState == 4 && this.status == 200){
-                                    if(this.responseText[0] === 'R') {
-                                        window.alert(this.responseText);
-                                        location.href = '../Login/Login.html';
+                            //限制用户输入，防止sql注入攻击和XSS存储攻击
+                            var re=/select|update|delete|truncate|join|union|exec|insert|drop|count|'|"|;|>|<|%/i;
+                            if (re.test(account_input) || re.test(password_input) || re.test(question_input) || re.test(answer_input)) window.alert('注册信息中不得含有特殊字符！')
+                            else {
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function () {
+                                    if(this.readyState == 4 && this.status == 200){
+                                        if(this.responseText[0] === 'R') {
+                                            window.alert(this.responseText);
+                                            location.href = '../Login/Login.html';
+                                        }
+                                        else {
+                                            window.alert(this.responseText);
+                                            location.href = 'Register.html';
+                                        }
                                     }
-                                    else {
-                                        window.alert(this.responseText);
-                                        location.href = 'Register.html';
-                                    }
-                                }
-                            };
-                            xhttp.open("POST","/server/server.php",true);
-                            var send_message = "account=" + account_input + "&password=" + password_input +
-                                "&password_again=" + password_again_input + "&question=" + question_input +
-                                "&answer=" + answer_input;
-                            xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                            xhttp.send(send_message);
+                                };
+                                xhttp.open("POST","/server/server.php",true);
+                                var send_message = "account=" + account_input + "&password=" + password_input +
+                                    "&password_again=" + password_again_input + "&question=" + question_input +
+                                    "&answer=" + answer_input;
+                                xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                                xhttp.send(send_message);
+                            }
                         }
                     }
                 }

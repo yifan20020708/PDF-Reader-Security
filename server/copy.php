@@ -5,7 +5,7 @@ $path_receive = $_REQUEST['path'];
 $data_receive = $_REQUEST['data'];
 #进行数据库服务器的连接
 $dbServername = 'localhost';
-$dbUsername = 'root';
+$dbUsername = "pdfreader";
 $dbPassword = 'yifan0708';
 $database = mysqli_connect($dbServername,$dbUsername,$dbPassword);
 if (!$database) {
@@ -14,10 +14,10 @@ if (!$database) {
     die();
 }
 mysqli_query($database,"set names utf8");
-#抵抗mysql注入攻击
-$account_receive_security = mysqli_real_escape_string($database,$account_receive);
-$data_receive_security = mysqli_real_escape_string($database,$data_receive);
-$path_receive_security = mysqli_real_escape_string($database,$path_receive);
+#抵抗mysql注入攻击和XSS存储攻击
+$account_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$account_receive),ENT_QUOTES,'UTF-8');
+$data_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$data_receive),ENT_QUOTES,'UTF-8');
+$path_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$path_receive),ENT_QUOTES,'UTF-8');
 #进行对应数据库的选择
 mysqli_select_db($database,"user_information" );
 $query = 'SELECT * FROM pdf_user_information WHERE Account=\'' . $account_receive_security . '\'' .'and path=\'' . $path_receive_security . '\'';

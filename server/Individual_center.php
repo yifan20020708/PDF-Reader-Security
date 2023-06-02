@@ -8,7 +8,7 @@ $data_receive = $_REQUEST['data'];
 $lang_receive = $_REQUEST['lang'];
 #进行数据库服务器的连接
 $dbServername = 'localhost';
-$dbUsername = 'root';
+$dbUsername = "pdfreader";
 $dbPassword = 'yifan0708';
 $database = mysqli_connect($dbServername,$dbUsername,$dbPassword);
 if (!$database) {
@@ -17,13 +17,13 @@ if (!$database) {
     die();
 }
 mysqli_query($database,"set names utf8");
-#防止sql注入攻击
-$account_receive_security = mysqli_real_escape_string($database,$account_receive);
-$name_receive_security = mysqli_real_escape_string($database,$name_receive);
-$path_receive_security = mysqli_real_escape_string($database,$path_receive);
-$tag_receive_security = mysqli_real_escape_string($database,$tag_receive);
-$data_receive_security = mysqli_real_escape_string($database,$data_receive);
-$lang_receive_security = mysqli_real_escape_string($database,$lang_receive);
+#防止sql注入攻击和XSS存储攻击
+$account_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$account_receive),ENT_QUOTES,'UTF-8');
+$name_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$name_receive),ENT_QUOTES,'UTF-8');
+$path_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$path_receive),ENT_QUOTES,'UTF-8');
+$tag_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$tag_receive),ENT_QUOTES,'UTF-8');
+$data_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$data_receive),ENT_QUOTES,'UTF-8');
+$lang_receive_security = htmlspecialchars(mysqli_real_escape_string($database,$lang_receive),ENT_QUOTES,'UTF-8');
 #进行用户信息表的建立
 mysqli_select_db( $database,"user_information");
 $sql_table = "CREATE TABLE pdf_user_information
